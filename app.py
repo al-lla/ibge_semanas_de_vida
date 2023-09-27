@@ -34,7 +34,10 @@ with st.container():
     col1, col2 = st.columns([1, 2])
     
     with col1:
-        data_nascimento = st.date_input('Qual a sua data de nascimento?', datetime(1990, 1, 1))
+        data_nascimento = st.date_input('Qual a sua data de nascimento?',
+                                        datetime(1990, 1, 1),
+                                        min_value=datetime(1940, 1, 1),
+                                        max_value=datetime.today())
     
     with col2:
         genero = st.radio('Qual é o seu gênero?', ['Feminino', 'Masculino'], horizontal=True)
