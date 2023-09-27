@@ -31,7 +31,7 @@ def carregar_dados():
 
 with st.container():
     
-    col1, col2 = st.columns([1, 2])
+    col1, col2 = st.columns(2)
     
     with col1:
         data_nascimento = st.date_input('Qual a sua data de nascimento?',
@@ -40,8 +40,7 @@ with st.container():
                                         max_value=datetime.today())
     
     with col2:
-        genero = st.radio('Qual é o seu gênero?', ['Feminino', 'Masculino'], horizontal=True)
-        st.write('<sub>* Por limitações da base do IBGE, possuímos expectativa de vida apenas para os gêneros feminino e masculino</sub>', unsafe_allow_html=True)
+        sexo = st.radio('Qual é o seu sexo?', ['Feminino', 'Masculino'], horizontal=True)
 
     hoje = datetime.today()
 
@@ -58,9 +57,9 @@ with st.container():
     df = carregar_dados()
     dados = df.loc[df.idade == idade]
 
-    if genero == 'Masculino':
+    if sexo == 'Masculino':
         semanas_vida = dados.semanas_morte_homens.iloc[0]
-    elif genero == 'Feminino':
+    elif sexo == 'Feminino':
         semanas_vida = dados.semanas_morte_mulheres.iloc[0]
     
     semanas_restantes = semanas_vida - semanas_vividas
@@ -71,23 +70,23 @@ with st.container():
 
 with st.container():
 
-    linhas = int(semanas_vida / 52) + (semanas_vida % 52 > 0)
+    colunas = int(semanas_vida / 52) + (semanas_vida % 52 > 0)
 
     data = {'semanas vividas': round(semanas_vividas/semanas_vida * 100),
             'semanas restantes': round(semanas_restantes/semanas_vida * 100)}
 
     fig = plt.figure(
         FigureClass=Waffle,
-        rows=linhas,
-        columns=52,
+        rows=52,
+        columns=colunas,
         values=data,
         figsize=(50, 40),
         colors=["#FCB24C", "#DDD3C3"],
         labels=[f"{k} ({v}%)" for k, v in data.items()],
         legend={'loc': 'upper right',
-                'bbox_to_anchor': (1, 1.03),
+                'bbox_to_anchor': (1, 1.05),
                 'ncol': len(data),
-                'fontsize': 30,
+                'fontsize': 45,
                 'framealpha': 0},
         starting_location='NW',
         vertical=True
