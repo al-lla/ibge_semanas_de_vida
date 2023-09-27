@@ -8,19 +8,34 @@ A partir dos dados, criei um [App no Streamlit](https://semanas-de-vida.streamli
 
 ## Utilizando o App
 
-Inputs:
+### Dados de uma pessoa
+
+**Inputs:**
+
 - Data de nascimento
 - Sexo
 
-Output:
+![input_de_uma_pessoa](input_1pessoa.png)
 
+**Output:**
+
+Quantidade de semanas vividas e quantidade de semanas restantes.
+
+![semanas_de_vida](semanas_vida.png)
 
 ### Comparação entre pessoas
 
-Inputs:
+**Inputs:**
+
 - Dada de nascimento da primeira pessoa
 - Sexo da primeira pessoa
 - Data de nascimento da segunda pessoa
 - Sexo da segunda pessoa
 
-  Output
+![input_de_duas_pessoas](input_2pessoas.png)
+
+**Output:**
+
+Quantidade de semanas vividas por cada pessoa e quantidade de semanas restantes para cada pessoa.
+
+![comparacao_entre_pessoas](comparacao_pessoas.png)
