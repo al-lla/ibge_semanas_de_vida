@@ -177,6 +177,11 @@ if submit:
     with st.container():
 
         cores = ['#60D394', '#FCB24C', '#DDD3C3', '#F68482']
+        
+        if len(data) <= 2:
+            posicao_legenda = (1, 1.05)
+        else:
+            posicao_legenda = (1, 1.1)
 
         fig = plt.figure(
             FigureClass=Waffle,
@@ -187,7 +192,7 @@ if submit:
             colors=cores[0:len(data)],
             labels=[f"{k} ({v}%)" for k, v in data.items()],
             legend={'loc': 'upper right',
-                    'bbox_to_anchor': (1, 1.1),
+                    'bbox_to_anchor': posicao_legenda,
                     'ncol': 2,
                     'fontsize': 40,
                     'framealpha': 0},
