@@ -126,6 +126,10 @@ if submit:
         st.write(f"#### Você tem {idade1} anos e já viveu {semanas_vividas1} semanas!")
         st.write(f"Segundo os dados do IBGE, espera-se que você viva {'' if on else '**'}{semanas_vida1} semanas{'' if on else '**'}, o que resulta em {'' if on else '**'}{semanas_restantes1} semanas restantes{'' if on else '**'}.")
 
+        colunas = int(semanas_vida1 / 52) + (semanas_vida1 % 52 > 0)
+        data = {'semanas vividas': round(semanas_vividas1/semanas_vida1 * 100),
+                'semanas restantes': round(semanas_restantes1/semanas_vida1 * 100)}
+
         if on:
             st.write(f"A pessoa com que você está se comparando, possui {idade2} anos e já viveu {semanas_vividas2} semanas. Espera-se que ela viva {semanas_vida2} semanas.")
 
@@ -184,7 +188,7 @@ if submit:
             columns=colunas,
             values=data,
             figsize=(50, 40),
-            colors=cores[0:len(data)+1],
+            colors=cores[0:len(data)],
             labels=[f"{k} ({v}%)" for k, v in data.items()],
             legend={'loc': 'upper right',
                     'bbox_to_anchor': (1, 1.1),
