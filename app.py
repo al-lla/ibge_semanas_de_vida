@@ -118,10 +118,6 @@ if submit:
             semanas_interseccao = int(min(semanas_restantes1, semanas_restantes2))
             semanas_extras = int(max(semanas_restantes1, semanas_restantes2) - semanas_interseccao)
 
-        else:
-            data = {'semanas vividas': round(semanas_vividas1/semanas_vida1 * 100),
-                    'semanas restantes': round(semanas_restantes1/semanas_vida1 * 100)}
-
     with st.container():
         st.write(f"#### Você tem {idade1} anos e já viveu {semanas_vividas1} semanas!")
         st.write(f"Segundo os dados do IBGE, espera-se que você viva {'' if on else '**'}{semanas_vida1} semanas{'' if on else '**'}, o que resulta em {'' if on else '**'}{semanas_restantes1} semanas restantes{'' if on else '**'}.")
